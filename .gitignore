@@ -1,0 +1,82 @@
+# ─── Personal reports ────────────────────────────────────────────────────────
+simulator-workflow.html
+simulator-plan.html
+simulator-feasibility-report.html
+
+# ─── Build output ─────────────────────────────────────────────────────────────
+out/
+build/
+*/build/
+*/out/
+*.class
+*.jar
+*.war
+*.aar
+*.ap_
+*.dex
+
+# ─── Gradle ───────────────────────────────────────────────────────────────────
+.gradle/
+*/gradle-wrapper.jar
+*/gradle/wrapper/gradle-wrapper.jar
+gradle-app.setting
+!gradle/wrapper/gradle-wrapper.properties
+local.properties
+
+# ─── IntelliJ IDEA / Android Studio ──────────────────────────────────────────
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+.idea/dataSources.xml
+.idea/dataSources.ids
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+.idea/gradle.xml
+.idea/libraries/
+.idea/shelf/
+atlassian-ide-plugin.xml
+
+# ─── Android ──────────────────────────────────────────────────────────────────
+gen/
+bin/
+proguard/
+captures/
+*.apk
+*.aab
+*.keystore
+!debug.keystore
+lint.xml
+
+# ─── Java ─────────────────────────────────────────────────────────────────────
+hs_err_pid*
+replay_pid*
+
+# ─── macOS ────────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V7
+.Trashes
+ehthumbs.db
+Thumbs.db
+.AppleDouble
+.LSOverride
+Icon?
+
+# ─── VS Code ──────────────────────────────────────────────────────────────────
+.vscode/
+*.code-workspace
+
+# ─── Logs & temp ──────────────────────────────────────────────────────────────
+*.log
+*.tmp
+*.temp
+*.swp
+*~
