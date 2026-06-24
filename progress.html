@@ -139,7 +139,7 @@
 <body>
 <div class="page">
 
-  <div class="updated">Last updated: June 23, 2026</div>
+  <div class="updated">Last updated: June 24, 2026</div>
 
   <!-- HEADER -->
   <div class="kicker">Darbots 5100 · Progress Tracker</div>
@@ -161,38 +161,38 @@
     <div class="overall-wrap">
       <div class="stat-card">
         <div class="stat-label">Project completion</div>
-        <div class="stat-value accent">4%</div>
-        <div class="stat-sub">Planning done · implementation starting</div>
+        <div class="stat-value good">15%</div>
+        <div class="stat-sub">E0 done · E1 + E2 unblocked</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Current epic</div>
-        <div class="stat-value good">E0</div>
-        <div class="stat-sub">Foundation — Week 1 (both tracks)</div>
+        <div class="stat-value good">E0 ✓</div>
+        <div class="stat-sub">Foundation complete · starting E1 + E2</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Track A progress</div>
-        <div class="stat-value accent">5%</div>
-        <div class="stat-sub">Fork exists · multi-module Gradle not set up</div>
+        <div class="stat-value good">15%</div>
+        <div class="stat-sub">Gradle :sim:run working · E2 unblocked</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Track B progress</div>
-        <div class="stat-value accent">5%</div>
-        <div class="stat-sub">Fork exists · hardware seam not started</div>
+        <div class="stat-value good">15%</div>
+        <div class="stat-sub">Interfaces frozen · E1 unblocked</div>
       </div>
     </div>
 
     <div class="big-bar-wrap">
-      <div class="big-bar-label"><b>Total project</b><span>4%</span></div>
-      <div class="bar-track"><div class="bar-fill overall" style="width:4%"></div></div>
+      <div class="big-bar-label"><b>Total project</b><span>15%</span></div>
+      <div class="bar-track"><div class="bar-fill overall" style="width:15%"></div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
       <div>
-        <div class="big-bar-label"><b style="color:var(--a)">Track A</b><span>5%</span></div>
-        <div class="bar-track"><div class="bar-fill a" style="width:5%"></div></div>
+        <div class="big-bar-label"><b style="color:var(--a)">Track A</b><span>15%</span></div>
+        <div class="bar-track"><div class="bar-fill a" style="width:15%"></div></div>
       </div>
       <div>
-        <div class="big-bar-label"><b style="color:var(--b)">Track B</b><span>5%</span></div>
-        <div class="bar-track"><div class="bar-fill b" style="width:5%"></div></div>
+        <div class="big-bar-label"><b style="color:var(--b)">Track B</b><span>15%</span></div>
+        <div class="bar-track"><div class="bar-fill b" style="width:15%"></div></div>
       </div>
     </div>
   </div>
@@ -336,8 +336,8 @@
 
     <!-- Today callout -->
     <div style="margin-top:16px;background:#0d1e2e;border:1px solid #1e3a52;border-radius:8px;padding:12px 16px;font-size:13px">
-      <span style="color:var(--accent);font-weight:700">▶ Today (Jun 23)</span> — Week 1, Day 1.
-      You're right at the start. Next gate is <b>Sync 1 on Jun 29</b>: fork running + interfaces frozen.
+      <span style="color:var(--accent);font-weight:700">▶ Today (Jun 24)</span> — Week 1, Day 2.
+      E0 complete — Gradle multi-module running, interfaces frozen, stubs committed. <b>Sync 1 gate passed early.</b> E1 + E2 are unblocked.
     </div>
   </div>
 
@@ -351,7 +351,7 @@
         <div class="epic-header">
           <span class="epic-badge both">E0</span>
           <span class="epic-name">Foundation</span>
-          <span class="epic-status in-progress">In Progress</span>
+          <span class="epic-status done">Done</span>
           <span class="epic-weeks">Wk 1 · Both tracks</span>
         </div>
         <ul class="task-list">
@@ -363,22 +363,22 @@
             <div class="task-check done"></div>
             <span>Architecture audit completed — workflow doc produced (<code>simulator-workflow.html</code>)</span>
           </li>
-          <li class="task-item">
-            <div class="task-check"></div>
-            <span>Gradle multi-module: <code>:shared</code>, <code>:sim</code>, <code>:robot-code</code> — not started</span>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Gradle multi-module: <code>:shared</code>, <code>:sim</code>, <code>:robot-code</code> — <em>done Jun 24</em></span>
           </li>
-          <li class="task-item">
-            <div class="task-check"></div>
-            <span>Co-design + commit <b>IMotor, IServo, IIMU, IHardwareMap</b> interfaces — not started</span>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Co-design + commit <b>IMotor, IServo, IIMU, IHardwareMap</b> interfaces — <em>done Jun 24, frozen</em></span>
           </li>
-          <li class="task-item">
-            <div class="task-check"></div>
-            <span><code>./gradlew :sim:run</code> → JavaFX box on floor — pending multi-module setup</span>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span><code>./gradlew :sim:run</code> → JavaFX simulator window opens — <em>verified Jun 24</em></span>
           </li>
         </ul>
         <div class="bar-row">
-          <span class="bar-pct both">20%</span>
-          <div class="bar-track-thin"><div class="bar-fill-thin" style="width:20%;background:var(--good)"></div></div>
+          <span class="bar-pct both">100%</span>
+          <div class="bar-track-thin"><div class="bar-fill-thin" style="width:100%;background:var(--good)"></div></div>
         </div>
       </div>
 
@@ -531,16 +531,16 @@
     <div class="section-title">What's Next</div>
     <div style="display:flex;flex-direction:column;gap:10px">
       <div style="background:#0d1e2e;border:1.5px solid var(--a-border);border-radius:10px;padding:14px 16px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--a);margin-bottom:6px">This week — E0 (Both)</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--a);margin-bottom:6px">Next up — E2 (Track A) + E1 (Track B)</div>
         <div style="font-size:13px;color:var(--muted)">
-          Set up Gradle multi-module (<code>:shared</code>, <code>:sim</code>, <code>:robot-code</code>). Design and commit
-          <b>IMotor / IServo / IIMU / IHardwareMap</b> interfaces. Verify <code>./gradlew :sim:run</code> opens JavaFX window.
+          <b>Track A — E2:</b> Init ODE4J world, mecanum chassis rigid body, floor/walls, motor torque hook, SimIMU heading feedback.<br>
+          <b>Track B — E1:</b> Refactor Shooters + Lift + MecanumDrive to take IMotor/IServo instead of HardwareMap. Unit tests for motor/servo math.
         </div>
       </div>
       <div style="background:#160f2a;border:1.5px solid var(--b-border);border-radius:10px;padding:14px 16px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--b);margin-bottom:6px">Gate — Sync 1 (Jun 29)</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--good);margin-bottom:6px">Sync 1 gate — PASSED (Jun 24, 5 days early)</div>
         <div style="font-size:13px;color:var(--muted)">
-          Do not start E2 or E1 until interfaces are <b>frozen and committed</b>. Half-day sync before branching.
+          Interfaces frozen and committed. <code>./gradlew :sim:run</code> verified. Both tracks are clear to start independently.
         </div>
       </div>
       <div style="background:#1e1508;border:1px solid #3a2a0a;border-radius:10px;padding:14px 16px">
