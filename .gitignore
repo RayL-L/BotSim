@@ -1,7 +1,5 @@
 # ─── Personal reports ────────────────────────────────────────────────────────
-simulator-workflow.html
-simulator-plan.html
-simulator-feasibility-report.html
+reports/
 
 # ─── Build output ─────────────────────────────────────────────────────────────
 out/
