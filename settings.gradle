@@ -1,0 +1,5 @@
+rootProject.name = 'ftc-sim'
+
+include ':shared'
+include ':sim'
+include ':robot-code'
