@@ -4,4 +4,17 @@ plugins {
 
 dependencies {
     api project(':shared')
+
+    // core (math/planning) + actions (Action/TrajectoryActionBuilder). Pinned to 1.0.0-beta6,
+    // NOT the newer 1.0.1 -- roadrunner:ftc:0.1.12 (what the original code was actually built
+    // against) pins this exact version, and 1.0.1's TrajectoryActionBuilder API has since changed
+    // shape. The roadrunner-ftc artifact itself (Encoder/LazyImu/LynxFirmware/FlightRecorder) is
+    // intentionally NOT a dependency -- it's Android/REV-hub hardware bridge code with no meaning
+    // here, and it also drags in FTC's entire Android SDK (RobotCore, TensorFlow Lite, androidx).
+    api 'com.acmerobotics.roadrunner:actions:1.0.0-beta6'
+
+    // ftclib's Command framework (Command/CommandBase/SubsystemBase/CommandScheduler/etc) is
+    // vendored as source under com/arcrobotics/ftclib/command -- see NOTICE.md there for why
+    // (org.ftclib.ftclib:core is published as an Android .aar, unusable from a plain java-library
+    // module). No Gradle dependency needed for it.
 }

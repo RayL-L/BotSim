@@ -8,13 +8,13 @@ sourceSets {
         java {
             srcDirs = [
                 'src/main/java',
-                '../vr_physics-master/Controller/src',
-                '../vr_physics-master/ODE4J/src',
-                '../vr_physics-master/TeamCode/src'
+                'vendor/Controller/src',
+                'vendor/ODE4J/src',
+                'vendor/TeamCode/src'
             ]
         }
         resources {
-            srcDirs = ['../vr_physics-master/Controller/src']
+            srcDirs = ['vendor/Controller/src']
             exclude '**/*.java'
         }
     }
@@ -22,14 +22,15 @@ sourceSets {
 
 dependencies {
     implementation project(':shared')
-    implementation fileTree(dir: '../vr_physics-master/lib', include: ['*.jar', '*/*.jar'])
+    implementation project(':robot-code')
+    implementation fileTree(dir: 'vendor/lib', include: ['*.jar', '*/*.jar'])
 }
 
 application {
     mainClass = 'virtual_robot.controller.VirtualRobotApplication'
 }
 
-def jfxJars = fileTree(dir: '../vr_physics-master/lib/javafx', include: '*.jar').asPath
+def jfxJars = fileTree(dir: 'vendor/lib/javafx', include: '*.jar').asPath
 
 run {
     jvmArgs = [

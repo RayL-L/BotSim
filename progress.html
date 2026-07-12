@@ -139,7 +139,7 @@
 <body>
 <div class="page">
 
-  <div class="updated">Last updated: June 24, 2026</div>
+  <div class="updated">Last updated: July 12, 2026</div>
 
   <!-- HEADER -->
   <div class="kicker">Darbots 5100 · Progress Tracker</div>
@@ -147,10 +147,10 @@
   <div class="subtitle">Physics-based FTC robot sim · June 23 → Sep 5, 2026</div>
 
   <div class="meta-row">
-    <div class="meta-chip"><b>Day 1</b>Week 1 of 11</div>
+    <div class="meta-chip"><b>Day 20</b>Week 3 of 11</div>
     <div class="meta-chip"><b>Jun 23</b>Project start</div>
     <div class="meta-chip"><b>Sep 5</b>Target ship</div>
-    <div class="meta-chip"><b>74 days</b>Remaining</div>
+    <div class="meta-chip"><b>55 days</b>Remaining</div>
     <div class="meta-chip"><b>Aug 28</b>MVP target</div>
   </div>
 
@@ -161,29 +161,29 @@
     <div class="overall-wrap">
       <div class="stat-card">
         <div class="stat-label">Project completion</div>
-        <div class="stat-value good">15%</div>
-        <div class="stat-sub">E0 done · E1 + E2 unblocked</div>
+        <div class="stat-value good">22%</div>
+        <div class="stat-sub">E0 done · E1 ~75% (Track B) · E2 not started (Track A)</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Current epic</div>
-        <div class="stat-value good">E0 ✓</div>
-        <div class="stat-sub">Foundation complete · starting E1 + E2</div>
+        <div class="stat-value good">E1</div>
+        <div class="stat-sub">Shared-code seam ported · tests + MeepMeep merge remain</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Track A progress</div>
         <div class="stat-value good">15%</div>
-        <div class="stat-sub">Gradle :sim:run working · E2 unblocked</div>
+        <div class="stat-sub">Unchanged since E0 · E2 physics not started</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Track B progress</div>
-        <div class="stat-value good">15%</div>
-        <div class="stat-sub">Interfaces frozen · E1 unblocked</div>
+        <div class="stat-value good">30%</div>
+        <div class="stat-sub">E1 ~75% done · E5/E6 not started</div>
       </div>
     </div>
 
     <div class="big-bar-wrap">
-      <div class="big-bar-label"><b>Total project</b><span>15%</span></div>
-      <div class="bar-track"><div class="bar-fill overall" style="width:15%"></div></div>
+      <div class="big-bar-label"><b>Total project</b><span>22%</span></div>
+      <div class="bar-track"><div class="bar-fill overall" style="width:22%"></div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
       <div>
@@ -191,8 +191,8 @@
         <div class="bar-track"><div class="bar-fill a" style="width:15%"></div></div>
       </div>
       <div>
-        <div class="big-bar-label"><b style="color:var(--b)">Track B</b><span>15%</span></div>
-        <div class="bar-track"><div class="bar-fill b" style="width:15%"></div></div>
+        <div class="big-bar-label"><b style="color:var(--b)">Track B</b><span>30%</span></div>
+        <div class="bar-track"><div class="bar-fill b" style="width:30%"></div></div>
       </div>
     </div>
   </div>
@@ -208,9 +208,9 @@
 
         <div class="tl-header">
           <div></div>
-          <div class="tl-wk current">Wk 1<br><span style="font-weight:400;font-size:9px">Jun 23</span></div>
+          <div class="tl-wk">Wk 1<br><span style="font-weight:400;font-size:9px">Jun 23</span></div>
           <div class="tl-wk">Wk 2<br><span style="font-weight:400;font-size:9px">Jun 30</span></div>
-          <div class="tl-wk">Wk 3<br><span style="font-weight:400;font-size:9px">Jul 7</span></div>
+          <div class="tl-wk current">Wk 3<br><span style="font-weight:400;font-size:9px">Jul 7</span></div>
           <div class="tl-wk">Wk 4<br><span style="font-weight:400;font-size:9px">Jul 14</span></div>
           <div class="tl-wk">Wk 5<br><span style="font-weight:400;font-size:9px">Jul 21</span></div>
           <div class="tl-wk">Wk 6<br><span style="font-weight:400;font-size:9px">Jul 28</span></div>
@@ -251,7 +251,7 @@
           <div class="tl-cell" style="grid-column:3/5">
             <div class="tl-bar b" style="left:2px;right:2px">
               <div class="tl-bar-bg"></div>
-              <div class="tl-bar-progress" style="width:0%"></div>
+              <div class="tl-bar-progress" style="width:75%">75%</div>
             </div>
           </div>
         </div>
@@ -336,8 +336,8 @@
 
     <!-- Today callout -->
     <div style="margin-top:16px;background:#0d1e2e;border:1px solid #1e3a52;border-radius:8px;padding:12px 16px;font-size:13px">
-      <span style="color:var(--accent);font-weight:700">▶ Today (Jun 24)</span> — Week 1, Day 2.
-      E0 complete — Gradle multi-module running, interfaces frozen, stubs committed. <b>Sync 1 gate passed early.</b> E1 + E2 are unblocked.
+      <span style="color:var(--accent);font-weight:700">▶ Today (Jul 12)</span> — Week 3, Day 20.
+      <b>Architecture pivot:</b> removed the <code>Darlington_in_FTC copy</code> Android submodule entirely and ported its real teleop/auto/subsystem logic into the main project, reorganized into three sections — <b>Main</b> (<code>robot-code</code>: <code>MecanumDrive</code>, <code>TwoDeadWheelLocalizer</code>, <code>Shooters</code>, <code>AutoRoute</code>, <code>TeleopDrive</code>), <b>Config</b> (<code>shared/RobotHardwareConfig</code>: one hardware-name source for both sim and future real-hardware code), and <b>Setup</b> (<code>sim/RobotSimHarness</code>: wires ported code to <code>SimHardwareMap</code>). All three modules compile clean. This covers most of E1's original scope, done via a rewrite instead of an in-place submodule refactor — real-hardware Android deployment is intentionally out of scope for now (sim-only).
     </div>
   </div>
 
@@ -387,7 +387,7 @@
         <div class="epic-header">
           <span class="epic-badge a">E2</span>
           <span class="epic-name">ODE4J Physics World</span>
-          <span class="epic-status blocked">Blocked on E0</span>
+          <span class="epic-status not-started">Not Started</span>
           <span class="epic-weeks">Wk 2–4 · Track A</span>
         </div>
         <ul class="task-list">
@@ -399,7 +399,6 @@
           <li class="task-item"><div class="task-check"></div><span>Odometry feedback → SimIMU heading, encoder ticks</span></li>
           <li class="task-item"><div class="task-check"></div><span>Kinematic fallback flag (<code>DRIVE_MODE=KINEMATIC</code>)</span></li>
         </ul>
-        <span class="locked-banner">⛔ Waits for E0 (Sync 1 · Jun 29)</span>
         <div class="bar-row">
           <span class="bar-pct a">0%</span>
           <div class="bar-track-thin"><div class="bar-fill-thin" style="width:0%;background:var(--a)"></div></div>
@@ -411,22 +410,47 @@
         <div class="epic-header">
           <span class="epic-badge b">E1</span>
           <span class="epic-name">Shared-Code Seam</span>
-          <span class="epic-status blocked">Blocked on E0</span>
+          <span class="epic-status in-progress">In Progress</span>
           <span class="epic-weeks">Wk 2–3 · Track B</span>
         </div>
         <ul class="task-list">
-          <li class="task-item"><div class="task-check"></div><span><b>SimDcMotorEx</b> implements IMotor (setPower, setVelocity, getCurrentPosition, setMode…)</span></li>
-          <li class="task-item"><div class="task-check"></div><span><b>SimServo</b> implements IServo (setPosition, getPosition)</span></li>
-          <li class="task-item"><div class="task-check"></div><span><b>SimHardwareMap</b> — <code>get(Class, name)</code> returns sim device by name</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Refactor <code>Shooters.java</code> → constructor takes IMotor/IServo</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Refactor <code>MecanumDrive.java</code> for IMotor injection</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Consolidate Auto.java + MeepMeepTest.java into one shared route file</span></li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span><b>SimMotor</b> implements IMotor (setPower, setVelocity, getCurrentPosition, setMode…)</span>
+          </li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span><b>SimServo</b> implements IServo (setPosition, getPosition)</span>
+          </li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span><b>SimHardwareMap</b> — returns sim device by name (typed <code>getMotor</code>/<code>getServo</code>/<code>getIMU</code>)</span>
+          </li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Removed <code>Darlington_in_FTC copy</code> Android submodule; reorganized into Main (<code>robot-code</code>) / Config (<code>shared/RobotHardwareConfig</code>) / Setup (<code>sim/RobotSimHarness</code>) — <em>done Jul 12</em></span>
+          </li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Ported <code>Shooters.java</code> → constructor takes <code>IHardwareMap</code>, uses IMotor throughout — <em>done Jul 12</em></span>
+          </li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Ported <code>MecanumDrive.java</code> + <code>TwoDeadWheelLocalizer.java</code> for IMotor/IIMU injection (REV-hub bulk caching and live VoltageSensor reads dropped — no sim equivalent, fixed nominal voltage used instead) — <em>done Jul 12</em></span>
+          </li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Vendored ftclib's Command framework as source (<code>Command</code>, <code>CommandScheduler</code>, <code>SubsystemBase</code>, etc.) — <code>org.ftclib.ftclib:core</code> is an Android <code>.aar</code>, unusable as a Gradle dependency from a plain Java module — <em>done Jul 12</em></span>
+          </li>
+          <li class="task-item">
+            <div class="task-check partial"></div>
+            <span>Consolidate Auto.java + MeepMeepTest.java into one shared route file — <em>Auto.java → <code>AutoRoute</code> ported; MeepMeepTest.java not yet touched</em></span>
+          </li>
           <li class="task-item"><div class="task-check"></div><span>Unit tests: motor command → encoder math, servo interpolation</span></li>
         </ul>
-        <span class="locked-banner">⛔ Waits for E0 (Sync 1 · Jun 29)</span>
         <div class="bar-row">
-          <span class="bar-pct b">0%</span>
-          <div class="bar-track-thin"><div class="bar-fill-thin" style="width:0%;background:var(--b)"></div></div>
+          <span class="bar-pct b">75%</span>
+          <div class="bar-track-thin"><div class="bar-fill-thin" style="width:75%;background:var(--b)"></div></div>
         </div>
       </div>
 
@@ -454,25 +478,27 @@
       </div>
 
       <!-- E5 -->
-      <div class="epic-item b locked">
+      <div class="epic-item b">
         <div class="epic-header">
           <span class="epic-badge b">E5</span>
           <span class="epic-name">OpMode Execution</span>
-          <span class="epic-status not-started">Not Started</span>
+          <span class="epic-status in-progress">In Progress</span>
           <span class="epic-weeks">Wk 4–6 · Track B</span>
         </div>
         <ul class="task-list">
-          <li class="task-item"><div class="task-check"></div><span>Adapt vr_physics OpMode runner → plug in SimHardwareMap + shared subsystems</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Thread model: ODE4J 120 Hz thread + OpMode thread, bridged via SimDcMotorEx state</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Auto.java end-to-end run — route completes without crash</span></li>
+          <li class="task-item">
+            <div class="task-check partial"></div>
+            <span>Adapt vr_physics OpMode runner → plug in SimHardwareMap + shared subsystems — <em><code>RobotSimHarness</code> wires ported code to SimHardwareMap and can schedule/tick the route via CommandScheduler; no real OpMode lifecycle or gamepad/keyboard input wired in yet</em></span>
+          </li>
+          <li class="task-item"><div class="task-check"></div><span>Thread model: ODE4J 120 Hz thread + OpMode thread, bridged via SimMotor state</span></li>
+          <li class="task-item"><div class="task-check"></div><span>Auto.java end-to-end run — route completes without crash <em>(blocked on E2 physics — SimMotor is still a stub, nothing moves yet)</em></span></li>
           <li class="task-item"><div class="task-check"></div><span>Mechanism events: Shooters spin-up/fire, slide extend/retract → SimActuator</span></li>
           <li class="task-item"><div class="task-check"></div><span>Telemetry bridge: Telemetry.addData → HUD overlay text</span></li>
           <li class="task-item"><div class="task-check"></div><span>Game-agnostic field config → <code>config/field.json</code></span></li>
         </ul>
-        <span class="locked-banner">⛔ Waits for E1 + Sync 2 (Jul 13)</span>
         <div class="bar-row">
-          <span class="bar-pct b">0%</span>
-          <div class="bar-track-thin"><div class="bar-fill-thin" style="width:0%;background:var(--b)"></div></div>
+          <span class="bar-pct b">10%</span>
+          <div class="bar-track-thin"><div class="bar-fill-thin" style="width:10%;background:var(--b)"></div></div>
         </div>
       </div>
 
@@ -531,23 +557,23 @@
     <div class="section-title">What's Next</div>
     <div style="display:flex;flex-direction:column;gap:10px">
       <div style="background:#0d1e2e;border:1.5px solid var(--a-border);border-radius:10px;padding:14px 16px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--a);margin-bottom:6px">Next up — E2 (Track A) + E1 (Track B)</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--a);margin-bottom:6px">Next up — E2 (Track A) + E1 wrap-up (Track B)</div>
         <div style="font-size:13px;color:var(--muted)">
-          <b>Track A — E2:</b> Init ODE4J world, mecanum chassis rigid body, floor/walls, motor torque hook, SimIMU heading feedback.<br>
-          <b>Track B — E1:</b> Refactor Shooters + Lift + MecanumDrive to take IMotor/IServo instead of HardwareMap. Unit tests for motor/servo math.
+          <b>Track A — E2:</b> Init ODE4J world, mecanum chassis rigid body, floor/walls, motor torque hook, SimIMU heading feedback. Nothing will visibly move in the JavaFX window until this lands — <code>SimMotor</code> is still a bare stub.<br>
+          <b>Track B — E1 wrap-up:</b> Unit tests for motor/servo math, fold MeepMeepTest.java into the shared route. Then start E5: real gamepad/keyboard input into <code>TeleopDrive</code>, an interactive game loop calling <code>RobotSimHarness.tick()</code>.
         </div>
       </div>
       <div style="background:#160f2a;border:1.5px solid var(--b-border);border-radius:10px;padding:14px 16px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--good);margin-bottom:6px">Sync 1 gate — PASSED (Jun 24, 5 days early)</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--good);margin-bottom:6px">Sync 2 gate — Jul 13 (tomorrow)</div>
         <div style="font-size:13px;color:var(--muted)">
-          Interfaces frozen and committed. <code>./gradlew :sim:run</code> verified. Both tracks are clear to start independently.
+          E1's shared-code seam is in place (Main/Config/Setup split, IMotor/IServo/IIMU-based ported code, RobotHardwareConfig, RobotSimHarness) — ahead of where a standard Sync 2 checkpoint expects. Remaining before E1 is fully done: unit tests, MeepMeepTest.java consolidation.
         </div>
       </div>
       <div style="background:#1e1508;border:1px solid #3a2a0a;border-radius:10px;padding:14px 16px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--warn);margin-bottom:6px">Risk to watch</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--warn);margin-bottom:6px">Risks to watch</div>
         <div style="font-size:13px;color:var(--muted)">
-          ODE4J mecanum stability — build the <code>DRIVE_MODE=KINEMATIC</code> fallback flag in E2 from day one.
-          Don't let physics instability block E3/E5/E6 later.
+          ODE4J mecanum stability — build the <code>DRIVE_MODE=KINEMATIC</code> fallback flag in E2 from day one. Don't let physics instability block E3/E5/E6 later.<br>
+          Real-hardware deployment was deliberately dropped from this pass (sim-only for now) — when it's picked back up, it needs four adapter classes (RealMotor/RealServo/RealIMU/RealHardwareMap implementing the shared interfaces) plus a <code>getVoltage()</code> addition to IHardwareMap for feedforward voltage compensation, which the sim port currently fakes with a fixed nominal voltage.
         </div>
       </div>
     </div>

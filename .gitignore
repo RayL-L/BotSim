@@ -78,3 +78,7 @@ Icon?
 *.temp
 *.swp
 *~
+
+# ─── Local backups / AI-tool config (never intended for the repo) ────────────
+Darlington_in_FTC copy.reference/
+.claude/

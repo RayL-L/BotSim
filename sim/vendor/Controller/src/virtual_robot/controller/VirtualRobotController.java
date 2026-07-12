@@ -23,6 +23,7 @@ import javafx.scene.transform.Translate;
 import javafx.util.Callback;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.UltimateBotDemo;
+import org.firstinspires.ftc.teamcode.DarbotsTeleop;
 import org.ode4j.ode.*;
 import org.reflections.Reflections;
 import virtual_robot.config.Config;
@@ -37,6 +38,7 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotorImpl;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import virtual_robot.controller.robots.UltimateBot;
+import virtual_robot.controller.robots.DarbotsBot;
 import virtual_robot.ftcfield.FtcField;
 import virtual_robot.ftcfield.SkyStoneField;
 import virtual_robot.ftcfield.UltimateGoalField;
@@ -249,7 +251,7 @@ public class VirtualRobotController {
                 validConfigClasses.add(c);
         }
         cbxConfig.setItems(validConfigClasses);
-        cbxConfig.setValue(UltimateBot.class);
+        cbxConfig.setValue(validConfigClasses.contains(DarbotsBot.class) ? DarbotsBot.class : UltimateBot.class);
 
         cbxConfig.setCellFactory(new Callback<ListView<Class<?>>, ListCell<Class<?>>>() {
             @Override
@@ -380,7 +382,9 @@ public class VirtualRobotController {
             }
         });
 
-        if (cbxOpModes.getItems().contains(UltimateBotDemo.class)){
+        if (cbxOpModes.getItems().contains(DarbotsTeleop.class)){
+            cbxOpModes.setValue(DarbotsTeleop.class);
+        } else if (cbxOpModes.getItems().contains(UltimateBotDemo.class)){
             cbxOpModes.setValue(UltimateBotDemo.class);
         } else if (!cbxOpModes.getItems().isEmpty()) {
             cbxOpModes.setValue(cbxOpModes.getItems().get(0));
