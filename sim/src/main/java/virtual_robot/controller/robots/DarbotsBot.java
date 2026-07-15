@@ -50,10 +50,10 @@ public class DarbotsBot extends VirtualBot {
     private final MotorType motorType = MotorType.Neverest40;
 
     private DcMotorExImpl[] motors = null; // LF, RF, LB, RB (index order below)
-    private DcMotorExImpl shootLMotor = null;
-    private DcMotorExImpl shootRMotor = null;
-    private DcMotorExImpl intakeMotor = null;
-    private DcMotorExImpl rampMotor = null;
+//    private DcMotorExImpl shootLMotor = null;
+//    private DcMotorExImpl shootRMotor = null;
+//    private DcMotorExImpl intakeMotor = null;
+//    private DcMotorExImpl rampMotor = null;
     private BNO055IMUImpl imu = null;
 
     private double wheelCircumference;
@@ -84,10 +84,10 @@ public class DarbotsBot extends VirtualBot {
                 hardwareMap.get(DcMotorExImpl.class, RobotHardwareConfig.RF),
                 hardwareMap.get(DcMotorExImpl.class, RobotHardwareConfig.RB)
         };
-        shootLMotor = hardwareMap.get(DcMotorExImpl.class, RobotHardwareConfig.SHOOT_L);
-        shootRMotor = hardwareMap.get(DcMotorExImpl.class, RobotHardwareConfig.SHOOT_R);
-        intakeMotor = hardwareMap.get(DcMotorExImpl.class, RobotHardwareConfig.INTAKE);
-        rampMotor = hardwareMap.get(DcMotorExImpl.class, RobotHardwareConfig.RAMP);
+//        shootLMotor = hardwareMap.get(DcMotorExImpl.class, RobotHardwareConfig.SHOOT_L);
+//        shootRMotor = hardwareMap.get(DcMotorExImpl.class, RobotHardwareConfig.SHOOT_R);
+//        intakeMotor = hardwareMap.get(DcMotorExImpl.class, RobotHardwareConfig.INTAKE);
+//        rampMotor = hardwareMap.get(DcMotorExImpl.class, RobotHardwareConfig.RAMP);
         imu = hardwareMap.get(BNO055IMUImpl.class, RobotHardwareConfig.IMU);
 
         hardwareMap.setActive(false);
@@ -200,10 +200,10 @@ public class DarbotsBot extends VirtualBot {
         fxBody.addForce(force);
         fxBody.addTorque(new DVector3(0, 0, frictionForces.get(2)));
 
-        shootLMotor.update(millis);
-        shootRMotor.update(millis);
-        intakeMotor.update(millis);
-        rampMotor.update(millis);
+//        shootLMotor.update(millis);
+//        shootRMotor.update(millis);
+//        intakeMotor.update(millis);
+//        rampMotor.update(millis);
     }
 
     protected void setUpFxBody() {
@@ -261,10 +261,10 @@ public class DarbotsBot extends VirtualBot {
 
     public void powerDownAndReset() {
         for (int i = 0; i < 4; i++) motors[i].stopAndReset();
-        shootLMotor.stopAndReset();
-        shootRMotor.stopAndReset();
-        intakeMotor.stopAndReset();
-        rampMotor.stopAndReset();
+//        shootLMotor.stopAndReset();
+//        shootRMotor.stopAndReset();
+//        intakeMotor.stopAndReset();
+//        rampMotor.stopAndReset();
         imu.close();
     }
 

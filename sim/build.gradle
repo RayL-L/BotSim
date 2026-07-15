@@ -8,13 +8,11 @@ sourceSets {
         java {
             srcDirs = [
                 'src/main/java',
-                'vendor/Controller/src',
-                'vendor/ODE4J/src',
-                'vendor/TeamCode/src'
+                'vendor/ODE4J/src'
             ]
         }
         resources {
-            srcDirs = ['vendor/Controller/src']
+            srcDirs = ['src/main/java']
             exclude '**/*.java'
         }
     }
