@@ -2,6 +2,12 @@
 reports/
 progress.html
 
+# ─── Large raw CAD exports (processed low-poly meshes live under src/main resources) ──
+sim/vendor/field-cad/
+
+# ─── Upstream vr_physics download (not part of this repo) ────────────────────
+vr_physics-master/
+
 # ─── Build output ─────────────────────────────────────────────────────────────
 out/
 build/
@@ -16,9 +22,8 @@ build/
 
 # ─── Gradle ───────────────────────────────────────────────────────────────────
 .gradle/
-*/gradle-wrapper.jar
-*/gradle/wrapper/gradle-wrapper.jar
 gradle-app.setting
+!gradle/wrapper/gradle-wrapper.jar
 !gradle/wrapper/gradle-wrapper.properties
 local.properties
 
@@ -56,18 +61,19 @@ lint.xml
 # ─── Java ─────────────────────────────────────────────────────────────────────
 hs_err_pid*
 replay_pid*
+*.hprof
 
 # ─── macOS ────────────────────────────────────────────────────────────────────
 .DS_Store
 .DS_Store?
 ._*
-.Spotlight-V7
+.Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
 .AppleDouble
 .LSOverride
-Icon?
+Icon[[:cntrl:]]
 
 # ─── VS Code ──────────────────────────────────────────────────────────────────
 .vscode/
@@ -80,6 +86,34 @@ Icon?
 *.swp
 *~
 
-# ─── Local backups / AI-tool config (never intended for the repo) ────────────
+# ─── Secrets / local env ──────────────────────────────────────────────────────
+.env
+.env.*
+
+# ─── Local backups (never intended for the repo) ─────────────────────────────
 Darlington_in_FTC copy.reference/
+
+# ─── AI coding assistants: config, memory, logs, transcripts ─────────────────
 .claude/
+CLAUDE.md
+CLAUDE.local.md
+.mcp.json
+AGENTS.md
+GEMINI.md
+.gemini/
+.cursor/
+.cursorrules
+.cursorignore
+.aider*
+.codex/
+.windsurf/
+.windsurfrules
+.continue/
+.cline/
+.clinerules
+.roo/
+.specstory/
+.junie/
+.kiro/
+.amazonq/
+.github/copilot-instructions.md

@@ -161,38 +161,38 @@
     <div class="overall-wrap">
       <div class="stat-card">
         <div class="stat-label">Project completion</div>
-        <div class="stat-value good">22%</div>
-        <div class="stat-sub">E0 done · E1 ~75% (Track B) · E2 not started (Track A)</div>
+        <div class="stat-value good">35%</div>
+        <div class="stat-sub">E0 done · E1 ~75% · E2 ~55% (pivoted) · E5 ~65%</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Current epic</div>
-        <div class="stat-value good">E1</div>
-        <div class="stat-sub">Shared-code seam ported · tests + MeepMeep merge remain</div>
+        <div class="stat-value good">E2 + E5</div>
+        <div class="stat-sub">Real ODE4J physics + real OpMode execution, via vr_physics bridge</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Track A progress</div>
-        <div class="stat-value good">15%</div>
-        <div class="stat-sub">Unchanged since E0 · E2 physics not started</div>
+        <div class="stat-value good">20%</div>
+        <div class="stat-sub">E2 physics now real, via a different path than planned (see below)</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Track B progress</div>
-        <div class="stat-value good">30%</div>
-        <div class="stat-sub">E1 ~75% done · E5/E6 not started</div>
+        <div class="stat-value good">45%</div>
+        <div class="stat-sub">E1 ~75% · E5 ~65% · E6 not started</div>
       </div>
     </div>
 
     <div class="big-bar-wrap">
-      <div class="big-bar-label"><b>Total project</b><span>22%</span></div>
-      <div class="bar-track"><div class="bar-fill overall" style="width:22%"></div></div>
+      <div class="big-bar-label"><b>Total project</b><span>35%</span></div>
+      <div class="bar-track"><div class="bar-fill overall" style="width:35%"></div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
       <div>
-        <div class="big-bar-label"><b style="color:var(--a)">Track A</b><span>15%</span></div>
-        <div class="bar-track"><div class="bar-fill a" style="width:15%"></div></div>
+        <div class="big-bar-label"><b style="color:var(--a)">Track A</b><span>20%</span></div>
+        <div class="bar-track"><div class="bar-fill a" style="width:20%"></div></div>
       </div>
       <div>
-        <div class="big-bar-label"><b style="color:var(--b)">Track B</b><span>30%</span></div>
-        <div class="bar-track"><div class="bar-fill b" style="width:30%"></div></div>
+        <div class="big-bar-label"><b style="color:var(--b)">Track B</b><span>45%</span></div>
+        <div class="bar-track"><div class="bar-fill b" style="width:45%"></div></div>
       </div>
     </div>
   </div>
@@ -239,7 +239,7 @@
           <div class="tl-cell" style="grid-column:3/6">
             <div class="tl-bar a" style="left:2px;right:2px">
               <div class="tl-bar-bg"></div>
-              <div class="tl-bar-progress" style="width:0%"></div>
+              <div class="tl-bar-progress" style="width:55%">55%</div>
             </div>
           </div>
         </div>
@@ -275,7 +275,7 @@
           <div class="tl-cell" style="grid-column:5/8">
             <div class="tl-bar b" style="left:2px;right:2px">
               <div class="tl-bar-bg"></div>
-              <div class="tl-bar-progress" style="width:0%"></div>
+              <div class="tl-bar-progress" style="width:65%">65%</div>
             </div>
           </div>
         </div>
@@ -337,7 +337,8 @@
     <!-- Today callout -->
     <div style="margin-top:16px;background:#0d1e2e;border:1px solid #1e3a52;border-radius:8px;padding:12px 16px;font-size:13px">
       <span style="color:var(--accent);font-weight:700">▶ Today (Jul 12)</span> — Week 3, Day 20.
-      <b>Architecture pivot:</b> removed the <code>Darlington_in_FTC copy</code> Android submodule entirely and ported its real teleop/auto/subsystem logic into the main project, reorganized into three sections — <b>Main</b> (<code>robot-code</code>: <code>MecanumDrive</code>, <code>TwoDeadWheelLocalizer</code>, <code>Shooters</code>, <code>AutoRoute</code>, <code>TeleopDrive</code>), <b>Config</b> (<code>shared/RobotHardwareConfig</code>: one hardware-name source for both sim and future real-hardware code), and <b>Setup</b> (<code>sim/RobotSimHarness</code>: wires ported code to <code>SimHardwareMap</code>). All three modules compile clean. This covers most of E1's original scope, done via a rewrite instead of an in-place submodule refactor — real-hardware Android deployment is intentionally out of scope for now (sim-only).
+      <b>Morning — E1 shared-code seam:</b> removed the <code>Darlington_in_FTC copy</code> Android submodule entirely and ported its real teleop/auto/subsystem logic into the main project, reorganized into three sections — <b>Main</b> (<code>robot-code</code>), <b>Config</b> (<code>shared/RobotHardwareConfig</code>), <b>Setup</b> (<code>sim/RobotSimHarness</code>).<br><br>
+      <b>Afternoon — E2/E5 pivot, real physics:</b> merged <code>vr_physics-master</code> fully into <code>sim/vendor</code> (no more sibling-directory <code>../</code> references). Discovered vr_physics-master already has a mature, working ODE4J physics engine — it was just wired to its own demo bot (<code>UltimateBot</code>, a 2020 "Ultimate Goal" robot), never to this project's code. Rather than building a second ODE4J world from scratch against the bare <code>SimMotor</code> stub (the original E2 plan), built a bridge instead: <code>VrPhysicsMotor/Servo/IMU/HardwareMap</code> (in <code>org.darbots.sim.vrbridge</code>) implement <code>IMotor/IServo/IIMU/IHardwareMap</code> over vr_physics-master's real physics-backed classes, a new <code>DarbotsBot</code> chassis (box + 4 mecanum wheels, real ODE4J force/torque kinematics, modeled on <code>UltimateBot</code>'s pattern) replaces the demo bot as the app's default, and two thin OpMode classes (<code>DarbotsTeleop</code>, <code>DarbotsAuto</code>) call the <em>same already-ported</em> <code>TeleopDrive</code>/<code>MecanumDrive</code>/<code>Shooters</code>/<code>AutoRoute</code> — no duplicated logic. App launches and discovers the new classes via reflection with no exceptions; <b>not yet visually confirmed driving correctly</b> — verify by running <code>./gradlew :sim:run</code> yourself. Chassis mass/dimensions are placeholder estimates, not yet tuned to the real robot.
     </div>
   </div>
 
@@ -387,21 +388,38 @@
         <div class="epic-header">
           <span class="epic-badge a">E2</span>
           <span class="epic-name">ODE4J Physics World</span>
-          <span class="epic-status not-started">Not Started</span>
+          <span class="epic-status in-progress">In Progress (pivoted)</span>
           <span class="epic-weeks">Wk 2–4 · Track A</span>
         </div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:8px">
+          <b>Plan changed Jul 12:</b> instead of building a new ODE4J world from scratch against the bare <code>SimMotor</code> stub, this epic is now satisfied by bridging into vr_physics-master's own already-working ODE4J engine (see <code>DarbotsBot</code> + <code>org.darbots.sim.vrbridge</code>). Task list below reworded to match what actually exists.
+        </div>
         <ul class="task-list">
-          <li class="task-item"><div class="task-check"></div><span>Init ODE4J world (gravity, 120 Hz, ERP/CFM)</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Robot chassis as box rigid body + inertia tensor</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Field floor + boundary walls as static geoms</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Mecanum anisotropic friction — motor torque → chassis velocity</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Expose <code>SimPhysicsMotor.setTorque()</code> hook</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Odometry feedback → SimIMU heading, encoder ticks</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Kinematic fallback flag (<code>DRIVE_MODE=KINEMATIC</code>)</span></li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>ODE4J world (gravity, physics thread, collision space) — <em>reused from vr_physics-master, not built fresh; already mature/proven via <code>UltimateBot</code></em></span>
+          </li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Robot chassis as box rigid body + inertia tensor — <code>DarbotsBot.setUpFxBody()</code>, real <code>DBox</code> collision geom — <em>done Jul 12, dimensions/mass are placeholder estimates</em></span>
+          </li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Field floor + boundary walls — <em>reused from vr_physics-master's existing field infrastructure; not customized to the actual current-season field yet</em></span>
+          </li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Mecanum kinematics — motor torque → chassis velocity — <code>DarbotsBot.updateState()</code>, same force/torque approach as <code>UltimateBot</code> — <em>done Jul 12</em></span>
+          </li>
+          <li class="task-item">
+            <div class="task-check partial"></div>
+            <span>Odometry feedback → IMU heading, encoder ticks — <code>VrPhysicsMotor</code>/<code>VrPhysicsIMU</code> read real physics-driven state (not <code>SimIMU</code> — that stub path is now secondary) — <em>wired, not yet visually confirmed accurate</em></span>
+          </li>
+          <li class="task-item"><div class="task-check"></div><span>Kinematic fallback flag (<code>DRIVE_MODE=KINEMATIC</code>) — <em>lower priority now; vr_physics-master's engine is already proven stable via existing bots</em></span></li>
         </ul>
         <div class="bar-row">
-          <span class="bar-pct a">0%</span>
-          <div class="bar-track-thin"><div class="bar-fill-thin" style="width:0%;background:var(--a)"></div></div>
+          <span class="bar-pct a">55%</span>
+          <div class="bar-track-thin"><div class="bar-fill-thin" style="width:55%;background:var(--a)"></div></div>
         </div>
       </div>
 
@@ -486,19 +504,31 @@
           <span class="epic-weeks">Wk 4–6 · Track B</span>
         </div>
         <ul class="task-list">
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Adapt vr_physics OpMode runner → plug in shared subsystems — <code>DarbotsTeleop</code>/<code>DarbotsAuto</code> use vr_physics-master's real <code>LinearOpMode</code> lifecycle (<code>init</code>/<code>waitForStart</code>/<code>loop</code>), calling the ported <code>TeleopDrive</code>/<code>MecanumDrive</code>/<code>Shooters</code>/<code>AutoRoute</code> directly via the <code>VrPhysicsHardwareMap</code> bridge — <em>done Jul 12 (uses the real hardwareMap path, not <code>RobotSimHarness</code>/<code>SimHardwareMap</code>, which remains as a lighter-weight non-GUI check)</em></span>
+          </li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Thread model: ODE4J physics thread + OpMode thread — <em>reused as-is from vr_physics-master's existing <code>opModeThread</code>/<code>physicsExecutorService</code>, bridged via <code>VrPhysicsMotor</code> reading real physics-driven encoder/velocity state</em></span>
+          </li>
           <li class="task-item">
             <div class="task-check partial"></div>
-            <span>Adapt vr_physics OpMode runner → plug in SimHardwareMap + shared subsystems — <em><code>RobotSimHarness</code> wires ported code to SimHardwareMap and can schedule/tick the route via CommandScheduler; no real OpMode lifecycle or gamepad/keyboard input wired in yet</em></span>
+            <span>Auto.java (now <code>AutoRoute</code>) end-to-end run — route completes without crash — <em>app launches and discovers <code>DarbotsAuto</code> via reflection with no exceptions; not yet confirmed running to completion by actually pressing Init/Start — verify by running <code>./gradlew :sim:run</code> yourself</em></span>
           </li>
-          <li class="task-item"><div class="task-check"></div><span>Thread model: ODE4J 120 Hz thread + OpMode thread, bridged via SimMotor state</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Auto.java end-to-end run — route completes without crash <em>(blocked on E2 physics — SimMotor is still a stub, nothing moves yet)</em></span></li>
-          <li class="task-item"><div class="task-check"></div><span>Mechanism events: Shooters spin-up/fire, slide extend/retract → SimActuator</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Telemetry bridge: Telemetry.addData → HUD overlay text</span></li>
-          <li class="task-item"><div class="task-check"></div><span>Game-agnostic field config → <code>config/field.json</code></span></li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Mechanism events: Shooters spin-up/fire — <code>shootL</code>/<code>shootR</code>/<code>Intake</code>/<code>Ramp</code> wired as real physics-backed motors on <code>DarbotsBot</code> — <em>done Jul 12 (no "slide"/Lift — out of scope)</em></span>
+          </li>
+          <li class="task-item done-task">
+            <div class="task-check done"></div>
+            <span>Telemetry bridge — <code>DarbotsTeleop</code>/<code>DarbotsAuto</code> call the same real <code>telemetry.addData</code>/<code>update</code> the existing demo OpModes already use, so it reuses vr_physics-master's existing telemetry display panel — <em>not independently re-verified visually</em></span>
+          </li>
+          <li class="task-item"><div class="task-check"></div><span>Game-agnostic field config → <code>config/field.json</code> — <em>not started; field is currently whatever vr_physics-master's default field is, not the actual current-season field</em></span></li>
         </ul>
         <div class="bar-row">
-          <span class="bar-pct b">10%</span>
-          <div class="bar-track-thin"><div class="bar-fill-thin" style="width:10%;background:var(--b)"></div></div>
+          <span class="bar-pct b">65%</span>
+          <div class="bar-track-thin"><div class="bar-fill-thin" style="width:65%;background:var(--b)"></div></div>
         </div>
       </div>
 
@@ -557,22 +587,25 @@
     <div class="section-title">What's Next</div>
     <div style="display:flex;flex-direction:column;gap:10px">
       <div style="background:#0d1e2e;border:1.5px solid var(--a-border);border-radius:10px;padding:14px 16px">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--a);margin-bottom:6px">Next up — E2 (Track A) + E1 wrap-up (Track B)</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--a);margin-bottom:6px">Next up — verify, then tune</div>
         <div style="font-size:13px;color:var(--muted)">
-          <b>Track A — E2:</b> Init ODE4J world, mecanum chassis rigid body, floor/walls, motor torque hook, SimIMU heading feedback. Nothing will visibly move in the JavaFX window until this lands — <code>SimMotor</code> is still a bare stub.<br>
-          <b>Track B — E1 wrap-up:</b> Unit tests for motor/servo math, fold MeepMeepTest.java into the shared route. Then start E5: real gamepad/keyboard input into <code>TeleopDrive</code>, an interactive game loop calling <code>RobotSimHarness.tick()</code>.
+          <b>Verify first:</b> launch <code>./gradlew :sim:run</code>, confirm the config/OpMode dropdowns default to "Darbots 5100"/"Darbots Teleop", drive it with a gamepad, and run "Darbots Auto" to completion. None of this has been visually confirmed yet — only that it compiles and launches without exceptions.<br>
+          <b>Then tune E2:</b> replace <code>DarbotsBot</code>'s placeholder mass/chassis dimensions with real numbers once known.<br>
+          <b>Then E1 wrap-up:</b> unit tests for motor/servo math, fold MeepMeepTest.java into the shared route.<br>
+          <b>Then E5 remainder:</b> game-agnostic field config instead of vr_physics-master's default field.
         </div>
       </div>
       <div style="background:#160f2a;border:1.5px solid var(--b-border);border-radius:10px;padding:14px 16px">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--good);margin-bottom:6px">Sync 2 gate — Jul 13 (tomorrow)</div>
         <div style="font-size:13px;color:var(--muted)">
-          E1's shared-code seam is in place (Main/Config/Setup split, IMotor/IServo/IIMU-based ported code, RobotHardwareConfig, RobotSimHarness) — ahead of where a standard Sync 2 checkpoint expects. Remaining before E1 is fully done: unit tests, MeepMeepTest.java consolidation.
+          Well ahead of a standard Sync 2 checkpoint: E1's shared-code seam is in place, and E2/E5 (originally not due until Wk 4–6) already have real ODE4J physics and real OpMode execution wired up, via a bridge into vr_physics-master's own engine rather than the originally-planned from-scratch build. Remaining: live verification (see above), E1's unit tests, E2's placeholder chassis numbers.
         </div>
       </div>
       <div style="background:#1e1508;border:1px solid #3a2a0a;border-radius:10px;padding:14px 16px">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--warn);margin-bottom:6px">Risks to watch</div>
         <div style="font-size:13px;color:var(--muted)">
-          ODE4J mecanum stability — build the <code>DRIVE_MODE=KINEMATIC</code> fallback flag in E2 from day one. Don't let physics instability block E3/E5/E6 later.<br>
+          ODE4J mecanum stability risk is now much lower than originally feared — <code>DarbotsBot</code> reuses <code>UltimateBot</code>'s already-proven force/torque kinematics rather than untested from-scratch physics code. The <code>DRIVE_MODE=KINEMATIC</code> fallback flag is deprioritized accordingly.<br>
+          Chassis mass/dimensions in <code>DarbotsBot</code> are placeholder estimates for a generic 18"×18" robot, not the real robot's numbers — drive behavior will be off until tuned.<br>
           Real-hardware deployment was deliberately dropped from this pass (sim-only for now) — when it's picked back up, it needs four adapter classes (RealMotor/RealServo/RealIMU/RealHardwareMap implementing the shared interfaces) plus a <code>getVoltage()</code> addition to IHardwareMap for feedforward voltage compensation, which the sim port currently fakes with a fixed nominal voltage.
         </div>
       </div>

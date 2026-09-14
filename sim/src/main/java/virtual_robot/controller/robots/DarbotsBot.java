@@ -43,7 +43,8 @@ public class DarbotsBot extends VirtualBot {
 
     private final float TOTAL_MASS = 15000; // mg, placeholder -- tune to real robot weight
     private final float TOTAL_Z_INERTIA = 5000000f; // gm*cm2, placeholder
-    private final float FIELD_FRICTION_COEFF = 1.0f;
+    private final float FIELD_FRICTION_COEFF = 2.0f; // raised with DRIVE_SPEED_MULT so accel keeps up
+    private static final double DRIVE_SPEED_MULT = 2.0; // scales top drive speed (bigger = faster)
     private final float GRAVITY = 980f; // cm/s2
     private final float MAX_WHEEL_X_FORCE = TOTAL_MASS * GRAVITY * FIELD_FRICTION_COEFF / (4.0f * (float) Math.sqrt(2));
 
@@ -92,7 +93,7 @@ public class DarbotsBot extends VirtualBot {
 
         hardwareMap.setActive(false);
 
-        wheelCircumference = Math.PI * botWidth / 4.5;
+        wheelCircumference = Math.PI * botWidth / 4.5 * DRIVE_SPEED_MULT;
         interWheelWidth = botWidth * 8.0 / 9.0;
         interWheelLength = botWidth * 7.0 / 9.0;
         wlAverage = (interWheelLength + interWheelWidth) / 2.0;
@@ -142,9 +143,13 @@ public class DarbotsBot extends VirtualBot {
             deltaTicks[i] = motors[i].update(millis);
             w[i] = deltaTicks[i] * wheelCircumference / motorType.TICKS_PER_ROTATION;
             double wheelRotationDegrees = 360.0 * deltaTicks[i] / motorType.TICKS_PER_ROTATION;
+            // NOTE: UltimateBot negates the two left wheels here (its motors are wired/mapped
+            // with the left side reversed). This project's shared TeleopDrive uses the standard
+            // mecanum power formula (LF/RF/LB/RB), so that left-side negation scrambles the
+            // wheel->body kinematics: strafe cancels to zero, drive maps to heading, and rotate
+            // maps to forward. Keeping raw wheel signs makes all three DOFs resolve correctly.
             if (i < 2) {
-                w[i] = -w[i];
-                wheelRotationDegrees = -wheelRotationDegrees;
+                wheelRotationDegrees = -wheelRotationDegrees; // cosmetic: left wheels visually spin opposite
             }
             wheelRotations[i] += Math.min(17, Math.max(-17, wheelRotationDegrees));
         }
